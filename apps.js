@@ -1,53 +1,73 @@
-const carritoUno = document.getElementById('carritoUno');
-const carritoDos = document.getElementById('carritoDos');
-const carritoTres = document.getElementById('carritoTres');
-const total = document.querySelector('.total');
-const img = document.querySelector('.img');
-const nom = document.querySelector('.nombre');
-const prec = document.querySelector('.precio');
-const elim = document.querySelector('.eliminar');
+const carrito = document.getElementsByClassName('carrito'),
+    total = document.querySelector('.total'),
+    img = document.querySelector('.img'),
+    nom = document.querySelector('.nombre'),
+    prec = document.querySelector('.precio'),
+    elim = document.querySelector('.eliminar');
+
 let producto = '',
-    logo ='',
+    logo = '',
     arrayImg = [],
     nombre = '',
     arrayNombre = []
-    precio = ''
-    arrayPrecio = [];
-    boton = '';
-    eliminar =`<img src="https://e7.pngegg.com/pngimages/854/935/png-clipart-computer-icons-scalable-graphics-icon-design-delete-button-logo-sign-thumbnail.png" alt="" width="20px" height="20px">`;
-    arrayEliminar = [];
-carritoUno.addEventListener('click', (e)=>{
-    logo = e.target.parentElement.firstElementChild;
-    nombre = e.target.parentElement.firstElementChild.nextElementSibling.textContent;
-    precio = e.target.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.textContent;
-    boton.innerHTML = eliminar;
-    arrayImg = [...arrayImg, `<br>${logo}`];
-    arrayNombre = [...arrayNombre, `<br>${nombre}`];
-    arrayPrecio = [...arrayPrecio, `<br>${precio}`];
-    arrayEliminar = [...arrayEliminar, `<br>${eliminar}`];
-    img.innerHTML= `<br>${arrayImg}`;
-    nom.innerHTML = `<br>${arrayNombre}`;
-    prec.innerHTML = `<br>${arrayPrecio}`;
-    elim.innerHTML = `<br>${arrayEliminar}`;
-    total.innerHTML=`<p>Total de curso es ${arrayImg.length}</p>`;
+precio = ''
+arrayPrecio = [];
+boton = '',
+    x = '';
+eliminar = `<img src="https://e7.pngegg.com/pngimages/854/935/png-clipart-computer-icons-scalable-graphics-icon-design-delete-button-logo-sign-thumbnail.png" alt="" width="20px" height="20px">`;
+arrayEliminar = [];
+arrayId = [];
 
-    // elim.addEventListener('click', (e)=>{
-    //     if (idElim === idImg){
-    //         img.style.display = 'none';
-    //         nom.style.display = 'none';
-    //         prec.style.display = 'none';
-    //         elim.style.display = 'none';
-    //     }       
-    // });
-    // console.log (arrayEliminar);    
-    
-});
-carritoDos.addEventListener('click', (e)=>{
-    logo = e.target.parentElement.firstElementChild;
-    nombre = e.target.parentElement.firstElementChild.nextElementSibling.textContent;
-    precio = e.target.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.textContent;
+
+class Profesor {
+    constructor(nombreProfesor) {
+        this.nombreProfesor = nombreProfesor;
+    }
+}
+class Carreras {
+    constructor(curso, costo) {
+        //this.logo =logo,
+        this.curso = curso,
+            this.costo = costo;
+    }
+}
+
+const profesorEdgarChang = new Profesor('Edgar Chang'),
+    profesorDiegoCueva = new Profesor('Diego Cueva'),
+    carrerasHTML = new Carreras('HTML', 's/ 600'),
+    carrerasCSS = new Carreras('CSS', 's/ 600'),
+    carrerasFP = new Carreras('Fundamento programación', 's/ 600');
+
+carrito[0].addEventListener('click', (e) => {
+    let x = e.target.parentElement;
+    logo = x.querySelector('img').src;
+    nombre = carrerasHTML.curso;
+    precio = carrerasHTML.costo;
     boton.innerHTML = eliminar;
-    arrayImg = [...arrayImg, `<br>${logo}`];
+    let idHTML = x.querySelector('button').getAttribute('data-id');
+    arrayImg = [...arrayImg, `<br><img src="${logo}" style="width:50%;"/>`];
+    arrayNombre = [...arrayNombre, `<br>${nombre}`];
+    arrayPrecio = [...arrayPrecio, `<br>${precio}`];
+    arrayEliminar = [...arrayEliminar, `<br>${eliminar}`];
+
+    console.log(arrayEliminar);
+    elim.addEventListener('click', (e) => {
+        alert(`Seguro que desea borrar ${nombre}`);
+    })
+
+    img.innerHTML = `<br>${arrayImg}`;
+    nom.innerHTML = `<br>${arrayNombre}`;
+    prec.innerHTML = `<br>${arrayPrecio}`;
+    elim.innerHTML = `<br>${arrayEliminar}`;
+    total.innerHTML = `<p>Total de curso es ${arrayImg.length}</p>`;
+});
+carrito[1].addEventListener('click', (e) => {
+    let css = e.target.parentElement;
+    logo = css.querySelector('img').src;
+    nombre = carrerasCSS.curso;
+    precio = carrerasCSS.costo;
+    boton.innerHTML = eliminar;
+    arrayImg = [...arrayImg, `<br><img src="${logo}" style="width:50%;"/>`];
     arrayNombre = [...arrayNombre, `<br>${nombre}`];
     arrayPrecio = [...arrayPrecio, `<br>${precio}`];
     arrayEliminar = [...arrayEliminar, `<br>${eliminar}`];
@@ -55,14 +75,15 @@ carritoDos.addEventListener('click', (e)=>{
     nom.innerHTML = `<br>${arrayNombre}`;
     prec.innerHTML = `<br>${arrayPrecio}`;
     elim.innerHTML = `<br>${arrayEliminar}`;
-    total.innerHTML=`<p>Total de curso es ${arrayImg.length}</p>`;
+    total.innerHTML = `<p>Total de curso es ${arrayImg.length}</p>`;
 });
-carritoTres.addEventListener('click', (e)=>{
-    logo = e.target.parentElement.firstElementChild;
-    nombre = e.target.parentElement.firstElementChild.nextElementSibling.textContent;
-    precio = e.target.parentElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.textContent;
+carrito[2].addEventListener('click', (e) => {
+    let fp = e.target.parentElement;
+    logo = fp.querySelector('img').src;
+    nombre = carrerasFP.curso;
+    precio = carrerasFP.costo;
     boton.innerHTML = eliminar;
-    arrayImg = [...arrayImg, `<br>${logo}`];
+    arrayImg = [...arrayImg, `<br><img src="${logo}" style="width:50%;"/>`];
     arrayNombre = [...arrayNombre, `<br>${nombre}`];
     arrayPrecio = [...arrayPrecio, `<br>${precio}`];
     arrayEliminar = [...arrayEliminar, `<br>${eliminar}`];
@@ -70,6 +91,7 @@ carritoTres.addEventListener('click', (e)=>{
     nom.innerHTML = `<br>${arrayNombre}`;
     prec.innerHTML = `<br>${arrayPrecio}`;
     elim.innerHTML = `<br>${arrayEliminar}`;
-    total.innerHTML=`<p>Total de curso es ${arrayImg.length}</p>`;
+    total.innerHTML = `<p>Total de curso es ${arrayImg.length}</p>`;
 });
+
 

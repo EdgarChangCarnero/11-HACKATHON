@@ -93,7 +93,7 @@ button {
      object-fit: over;
 }
 
-.grupo .caja:nth-child(2) .subSubTtitulo {
+.grupo .caja:nth-child(2) .subSubTitulo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -133,13 +133,6 @@ button {
 
 .grupo .caja:nth-child(2) .total {
   font-weight: bold;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0%;
-  border: 1px solid black;
 }
 
 #barra {
@@ -192,12 +185,19 @@ button {
   font-size: 24px;
 }
 
-#carrera .contenido #carritoUno, #carrera .contenido #carritoDos, #carrera .contenido #carritoTres {
+#carrera .contenido .carrito {
   background-color: #96CCE8;
   width: 100%;
   padding: 1em;
   color: #fff;
   border-radius: 5%;
   border: 1px solid #96CCE8;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0%;
+  border: 1px solid black;
 }
 /*# sourceMappingURL=style.css.map */
